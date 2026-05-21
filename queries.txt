@@ -1,30 +1,64 @@
-Forma de ejecutar proyecto:
-./MTree ruta/a/archivo.json cantidadMaximaNodosPorHoja
+Project execution:
 
-Las consultas deben tener el siguiente formato
+./MTree <path/to/file.json> <max_leaf_node_capacity>
 
-Match exacto:
-    "nombre de campo" = valor
-    Ejemplo:
-        Age = 36
+Example:
+./MTree dataset.json 5
+
+
+==================================================
+QUERY SYNTAX
+==================================================
+
+Exact match query:
+
+    <field_name> = <value>
+
+Example:
+
+    Age = 36
+
+
+--------------------------------------------------
 
 Range query:
-    "nombre de campo" BETWEEN valorminimo,valormaximo (retorna todos los que se encuentran en el rango, se incluyen los valores que coinciden con valmin y valmax)
-    Ejemplo:
-     Glucose BETWEEN 40,57 
-      
 
-se pueden combinar las consultas con AND y OR
+    <field_name> BETWEEN <min_value>,<max_value>
 
-    Ejemplo:
-        Glucose BETWEEN 40,57 OR Age = 36
-        Glucose BETWEEN 40,57 AND Age = 36
+Returns all records within the specified range,
+including boundary values.
 
-Tambien puede hacerce consultas del tipo:
+Example:
+
+    Glucose BETWEEN 40,57
+
+
+--------------------------------------------------
+
+Queries can be combined using AND and OR.
+
+Examples:
+
+    Glucose BETWEEN 40,57 OR Age = 36
+
+    Glucose BETWEEN 40,57 AND Age = 36
+
+
+--------------------------------------------------
+
+Nested queries are also supported.
+
+Example:
+
     (Glucose BETWEEN 40,57 AND Age = 36) OR (BMI = 24.2)
 
-    es obligatorio el uso de ()
+Parentheses are mandatory when grouping expressions.
 
 
-NOTA: sensible a mayusculas, palabras como BETWEEN, AND y OR siempre en mayusculas.
-    
+--------------------------------------------------
+
+IMPORTANT:
+
+- Query syntax is case-sensitive.
+- Keywords such as BETWEEN, AND, and OR
+  must always be written in uppercase.
