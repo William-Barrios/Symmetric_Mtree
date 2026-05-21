@@ -46,4 +46,4 @@ queries.txt
 
 ## References
 
-This project is an independent educational implementation inspired by concepts presented in the original M-Tree research paper.
+This project is an independent educational implementation inspired by concepts presented in the original Symmetric M-Tree research paper.
